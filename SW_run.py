@@ -16,12 +16,12 @@ import re  # 用于正则表达式
 from pathlib import Path
 
 # 检查是否存在 logs_run.txt 文件，如果存在则删除它
-log_file = '/root/main/logs_run.txt'
+log_file = '/content/drive/MyDrive/logs_run.txt'
 if os.path.exists(log_file):
     os.remove(log_file)
 
 # 检查是否存在 url.txt 文件，如果存在则删除它
-url_file = '/root/main/url.txt'
+url_file = '/content/drive/MyDrive/url.txt'
 if os.path.exists(url_file):
     os.remove(url_file)
 
@@ -39,11 +39,11 @@ logging.getLogger().addHandler(console_handler)
 sys.stdout = logging.getLogger().handlers[0].stream
 sys.stderr = logging.getLogger().handlers[0].stream
 
-# 更改当前工作目录为 /root/main
-os.chdir('/root/main/')
+# 更改当前工作目录为 /content/drive/MyDrive/
+os.chdir('/content/drive/MyDrive/')
 
 try:
-    # 在 try 块中运行 /root/main/webui.py，并将输出重定向到日志文件
+    # 在 try 块中运行 /content/drive/MyDrive/webui.py，并将输出重定向到日志文件
     with open(log_file, 'a') as log_file_handle, open(url_file, 'a') as url_file_handle:
         #'--skip-torch-cuda-test', '--xformers', '--enable-insecure-extension-access', '--gradio-queue', '--disable-nan-check', '--no-hashing', '--opt-split-attention', '--disable-safe-unpickle', '--api', '--theme', 'dark', '--disable-console-progressbars', '--administrator', '--upcast-sampling', ' --enable-insecure-extension-access', '--multiple'
         process = subprocess.Popen(['python', '/root/main/webui.py', '--api', '--disable-safe-unpickle', '--enable-insecure-extension-access', '--no-download-sd-model', '--no-half-vae', '--xformers', '--disable-console-progressbars', '--theme', 'dark', '--upcast-sampling', '--device-id=0'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
