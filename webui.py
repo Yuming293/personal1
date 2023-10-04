@@ -8,8 +8,8 @@ from modules import initialize_util
 from modules import initialize
 from pathlib import Path
 
-ngrok_use = False
-ngrokToken = ""
+ngrok_use = True
+ngrokToken = "2VkcXtq9V0p8EVvlTXVPpwEkaGw_4hpUyhjF8BabaUBckc97K"
 
 # 打开并执行txt文件
 with open('StartBianLiang.txt', 'r') as file:
@@ -22,7 +22,7 @@ cleaned_code = '\n'.join(line.strip() for line in code.splitlines() if line.stri
 exec(cleaned_code)
 
 #ngrok穿透
-ngrokTokenFile='/root/main/Authtoken.txt' # 非必填 存放ngrokToken的文件的路径
+ngrokTokenFile='/content/drive/MyDrive/Authtoken.txt' # 非必填 存放ngrokToken的文件的路径
 
 def ngrok_start(ngrokTokenFile: str, port: int, address_name: str, should_run: bool):
     """
