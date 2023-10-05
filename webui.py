@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import time
 
+from modules import timer
 from modules import initialize_util
 from modules import initialize
 from pathlib import Path
