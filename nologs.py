@@ -18,13 +18,9 @@ formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 console_handler.setFormatter(formatter)
 logging.getLogger().addHandler(console_handler)
 
-# 重定向标准输出和标准错误到日志文件和控制台
-sys.stdout = logging.getLogger().handlers[0].stream
-sys.stderr = logging.getLogger().handlers[0].stream
-
 try:
-    # 在try块中运行v2_3.py，并将输出重定向到日志文件
-    print ("开始运行安装文件...")
+    # 在try块中运行BuShu.py，并将输出重定向到日志文件和控制台
+    print("开始运行安装文件...")
     with open(log_file, 'a') as log_file_handle:
         result = subprocess.run(['python', 'BuShu.py'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         print(result.stdout.decode('utf-8'))
@@ -37,7 +33,7 @@ except Exception as e:
     # 捕获其他异常并记录到日志文件
     logging.exception(f"程序发生异常: {e}")
 finally:
-    print ("安装完毕！")
+    print("安装完毕！")
     # 最后，关闭日志处理程序，以确保所有日志都被写入到日志文件
     logging.getLogger().removeHandler(console_handler)
     console_handler.close()
