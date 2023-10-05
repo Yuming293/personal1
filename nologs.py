@@ -26,6 +26,9 @@ try:
     # 在try块中运行v2_3.py，并将输出重定向到日志文件
     print ("开始运行安装文件...")
     with open(log_file, 'a') as log_file_handle:
+        result = subprocess.run(['python', 'BuShu.py'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        print(result.stdout.decode('utf-8'))
+        print(result.stderr.decode('utf-8'))
         subprocess.run(['python', 'BuShu.py'], check=True, stdout=log_file_handle, stderr=subprocess.STDOUT)
 except subprocess.CalledProcessError as e:
     # 捕获异常并记录到日志文件
