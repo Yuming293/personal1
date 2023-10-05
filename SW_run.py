@@ -15,6 +15,16 @@ import re  # 用于正则表达式
 
 from pathlib import Path
 
+# 检查是否存在 logs_run.txt 文件，如果存在则删除它
+log_file = '/content/drive/MyDrive/logs_run.txt'
+if os.path.exists(log_file):
+    os.remove(log_file)
+
+# 检查是否存在 url.txt 文件，如果存在则删除它
+url_file = '/content/drive/MyDrive/url.txt'
+if os.path.exists(url_file):
+    os.remove(url_file)
+
 # 配置日志
 logging.basicConfig(filename=log_file, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
