@@ -26,12 +26,7 @@ try:
         print(result.stdout.decode('utf-8'))
         print(result.stderr.decode('utf-8'))
         subprocess.run(['python', 'BuShu.py'], check=True, stdout=log_file_handle, stderr=subprocess.STDOUT)
-except subprocess.CalledProcessError as e:
-    # 捕获异常并记录到日志文件
-    logging.exception(f"程序发生异常: {e}")
-except Exception as e:
-    # 捕获其他异常并记录到日志文件
-    logging.exception(f"程序发生异常: {e}")
+
 finally:
     print("安装完毕！")
     # 最后，关闭日志处理程序，以确保所有日志都被写入到日志文件
